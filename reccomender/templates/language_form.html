@@ -1,0 +1,27 @@
+<!-- language_form.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/lf.css' %}">
+    <title>Language Selection</title>
+    <style>
+        *{
+          font-size: 2rem;
+        }
+      </style>
+</head>
+<body>
+    <div class="language-form-container">
+        <form class="language-form" method="get" action="{% url 'filtered_movies' %}">
+            <div class="form-group">
+                <label>Select Languages:</label>
+                <!-- Add your language selection elements here -->
+            </div>
+            <button class="filter-button" type="submit" style="font-size: 2rem;">Filter Movies</button>
+        </form>
+    </div>
+</body>
+</html>

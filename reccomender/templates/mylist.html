@@ -1,0 +1,32 @@
+{% extends "main.html" %}
+{% block content %}
+<style>
+    *{
+      font-size: 2rem;
+      color: white;
+    }
+  </style>
+<h2>My List</h2>
+<hr>
+<br>
+<!-- Movie list -->
+<div class="row">
+    {% if movies %}
+    {% for movie in movies %}
+        <div class="col-sm-2 col-md-2 ">
+            <div class="thumbnail">
+                <h4>{{movie.name}}</h4>
+                <a href="{% url 'detail' movie.id %}">
+                    <img src="{{ movie.pic.url}}" class="img-responsive h-75">
+                </a>
+            </div>
+        </div>
+    {% endfor %}
+    {% else %}
+        <div class="alert alert-danger">
+            <strong>Sorry!</strong> No movies in your list.
+        </div>
+    {% endif %}
+</div>
+
+{% endblock content %}

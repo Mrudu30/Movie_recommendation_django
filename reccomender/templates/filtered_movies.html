@@ -1,0 +1,31 @@
+<!-- template.html -->
+{% extends 'main.html' %}
+{% block content %}
+  
+<head>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/forms.css' %}">
+</head>
+<style>
+    *{
+      font-size: 2rem;
+    }
+  </style>
+<body>
+    <!-- template.html -->
+<form class="filter-form" method="get" action="{% url 'filter_movies' %}">
+    <div class="form-group">
+        <label for="{{ genre_form.genre.id_for_label }}">Select Genres:</label>
+        {{ genre_form.genre }}
+    </div>
+    <div class="form-group">
+        <label for="{{ language_form.languages.id_for_label }}">Select Languages:</label>
+        {{ language_form.languages }}
+    </div>
+    <button class="filter-button" type="submit" style="font-size: 2rem;">Filter Movies</button>
+</form>
+
+</body>
+</html>
+
+{% endblock content %}

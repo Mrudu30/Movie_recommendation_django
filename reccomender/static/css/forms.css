@@ -1,0 +1,43 @@
+/* styles.css */
+/* Style the form container */
+.filter-form {
+    background-color: #f0f0f0;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    width: 50%; /* Adjust the width as needed */
+    margin: 0 auto; /* Center the form horizontally */
+}
+
+/* Style the form labels */
+label {
+    font-weight: bold;
+    display: block; /* Display labels as block elements (vertical layout) */
+    margin-bottom: 10px; /* Add spacing between labels */
+}
+
+/* Style the genre columns */
+.genre-columns {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+/* Style each genre column */
+.genre-column {
+    flex: 1;
+    width: calc(10% - 10px); /* 10% width for each column with spacing */
+    margin-right: 10px; /* Add spacing between columns */
+}
+
+
+/* Style the label as buttons */
+label.checkbox-label {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
