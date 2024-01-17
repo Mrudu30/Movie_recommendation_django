@@ -1,0 +1,59 @@
+{% extends "main.html" %}
+{% block content %}
+{% if not request.user.is_authenticated %}
+<br>
+{% else %}
+<center style="color:#fff; text-transform: capitalize;"><h2>Welcome {{user.username}}!!</h2></center>
+{% endif %}
+
+<div class="container" >
+<div class="col-xs-6 col-xs-offset-3">
+    <form class="form-horizontal" role="search" method="get" action=''>
+        <div class="form-group">
+            <div class="input-group">
+                <input type="text" class="form-control" style="font-size:large" name="q" value="{{ request.GET.q }}" placeholder= "Search Movies "/>
+                    <button class='btn btn-success' style="font-size:large" type='submit'>Search</button>
+            </div>
+        </div>
+    </form>
+</div>
+</div>
+<style>
+    .thumbnail p, .thumbnail h4 {
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        }
+    .na{
+        color: white;
+    }
+</style>
+
+<p style="text-align:left;">
+<span style="float:right;">
+    <a href="{% url 'filter_movies' %}" style="font-size: 15px;" class="btn">
+        <button style="color:#fff;background-color:#383938;padding:10px">Get Movie Recommendation</button>
+    </a>
+<h2>Movie List</h2>
+</span>
+</p>
+<hr>
+<br>
+
+<!-- Movie list -->
+    <div class="row" >
+        {% if movies %}
+        {% for movie in movies %}
+            <div class="col-sm-2 col-md-2">
+                <div class="thumbnail" style="border-radius: 22px 22px 22px 22px;">
+                    <center><h5 class="na">{{movie.name}}</h5></center>
+                    <a href="{% url 'detail' movie.id %}">
+                        <img src="{{ movie.pic.url}}" class="img-responsive h-75" style="border-radius: 22px 22px 22px 22px;">
+                    </a>
+                    <!-- <h5>{{movie.genre}}</h5> -->
+                </div>
+            </div>
+            {% endfor %}
+            {% endif %}
+    </div>
+{% endblock content %}
