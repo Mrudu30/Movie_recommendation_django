@@ -28,7 +28,7 @@ class Movie(models.Model):
     def __str__(self):
         return str(self.name)
     
-# Display for my list for evry user
+# Display for my list for every user
 class MyList(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     movie = models.ForeignKey(Movie, on_delete=models.CASCADE)

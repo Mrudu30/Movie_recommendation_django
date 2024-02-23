@@ -15,7 +15,7 @@ def home(request):
         movies = Movie.objects.all()
         context =  {'movies': movies}
     
-    return render(request,'home.html',context)
+    return render(request,'initTemplates/home.html',context)
 
 def detail(request,movie_id):
     if not request.user.is_authenticated:
@@ -48,7 +48,7 @@ def detail(request,movie_id):
         else:
             messages.success(request, "Movie removed from your list!")
     context = {'movies': movies,'update':update}
-    return render(request, 'detail.html', context)
+    return render(request, 'initTemplates/detail.html', context)
 
 def filter_movies(request):
     if not request.user.is_authenticated:
@@ -76,9 +76,9 @@ def filter_movies(request):
 
         movies = movies.filter(genre_filter & language_filter).distinct()
         # Redirect to the result page with filtered movies
-        return render(request, 'filtered_movies_result.html', {'movies': movies})
+        return render(request, 'filter/filtered_movies_result.html', {'movies': movies})
 
-    return render(request, 'filtered_movies.html', {'movies': movies, 'genre_form': genre_form, 'language_form': language_form})
+    return render(request, 'filter/filtered_movies.html', {'movies': movies, 'genre_form': genre_form, 'language_form': language_form})
 
 
 def index(request):
@@ -93,4 +93,4 @@ def mylist(request):
 
     movies = Movie.objects.filter(mylist__watch=True,mylist__user=request.user)
    
-    return render(request, 'mylist.html', {'movies': movies})
+    return render(request, 'initTemplates/mylist.html', {'movies': movies})
