@@ -11,7 +11,7 @@ urlpatterns = [
     path('signupaccount/', av.signupaccount, name='signup'),
     path('logout/', av.logoutaccount, name='logout'),
     path('mylist/',mylist,name='mylist'),
-    path('<int:movie_id>/', detail, name='detail'),
+    path('detail/<int:movie_id>/', detail, name='detail'),
     path('filter/', filter_movies, name='filter_movies'),
 ]
 

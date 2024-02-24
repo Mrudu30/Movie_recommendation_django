@@ -1,9 +1,10 @@
 from django.shortcuts import redirect,render,get_object_or_404
 from django.db.models import Q
-from .models import Movie,MyList,Genre,Language
+from .models import Movie,MyList
 from django.contrib import messages
 from django.http import Http404
 from .forms import GenreFilterForm,LanguageFilterForm
+import time
 
 def home(request):
     query = request.GET.get('q')
@@ -17,37 +18,35 @@ def home(request):
     
     return render(request,'initTemplates/home.html',context)
 
-def detail(request,movie_id):
+def detail(request, movie_id):
     if not request.user.is_authenticated:
-        return redirect("login")
+        return redirect('login')
+
     if not request.user.is_active:
         raise Http404
-    movies = get_object_or_404(Movie, id=movie_id)
-    movie = Movie.objects.get(id=movie_id)
-    
-    temp = list(MyList.objects.all().values().filter(movie_id=movie_id,user=request.user))
-    if temp:
-        update = temp[0]['watch']
-    else:
-        update = False
-    if request.method == "POST":
 
-        # For my list
-        if 'watch' in request.POST:
-            watch_flag = request.POST['watch']
-            if watch_flag == 'on':
-                update = True
-            else:
-                update = False
-        if MyList.objects.all().values().filter(movie_id=movie_id,user=request.user):
-            MyList.objects.all().values().filter(movie_id=movie_id,user=request.user).update(watch=update)
-        else:
-            MyList(user=request.user,movie=movie,watch=update).save()
-        if update:
-            messages.success(request, "Movie added to your list!")
-        else:
-            messages.success(request, "Movie removed from your list!")
-    context = {'movies': movies,'update':update}
+    movie = get_object_or_404(Movie, id=movie_id)
+    is_in_my_list = MyList.objects.filter(user=request.user, movie=movie).exists()
+
+    if request.method == 'POST':
+        watch_flag = request.POST.get('watch', False)
+        if watch_flag == 'on':
+            if not is_in_my_list:
+                # Add movie to user's list
+                MyList.objects.create(user=request.user, movie=movie)
+                messages.success(request, f'{movie.name} added to your list.')
+
+            if is_in_my_list:
+                # Remove movie from user's list
+                MyList.objects.filter(user=request.user, movie=movie).delete()
+                messages.success(request, f'{movie.name} removed from your list.')
+                time.sleep(2)
+                return redirect('mylist')
+
+        # Redirect back to the movie detail page
+        return redirect('detail', movie_id=movie_id)
+
+    context = {'movie': movie, 'is_in_my_list': is_in_my_list}
     return render(request, 'initTemplates/detail.html', context)
 
 def filter_movies(request):

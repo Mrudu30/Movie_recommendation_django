@@ -21,26 +21,28 @@
             <td class="col-lg-2">
                 <!-- Left Movie Info -->
                 <div class="thumbnail" style="border-radius: 22px;">
-                    <img src="{{ movies.pic.url }}" class="img-responsive h-75" style="border-radius: 22px;">
-                    <h1 style="color:#fff">{{ movies.name }}</h1>
+                    <img src="{{ movie.pic.url }}" class="img-responsive h-75" style="border-radius: 22px;">
+                    <h1 style="color:#fff">{{ movie.name }}</h1>
                 </div>
             </td>
             <td class="col-lg-4 mx-auto d-block" style="color:#fff;">
-                {{ movies.desc }}
+                {{ movie.desc }}
                 <br>
-                Date of Release: {{ movies.date_of_release }}
+                    Date of Release: {{ movie.date_of_release }}
                 <br>
                 <br>
                 <!-- Right Movie Info -->
-                <form class="form-horizontal" role="search" method="post" action="{% url 'detail' movies.id %}">
+                <form class="form-horizontal" role="search" method="post" action="{% url 'detail' movie.id %}">
                     {% csrf_token %}
                     <div class="input-group">
                         <div class="row" style="display: inline-flex;">
-                            {% if update %}
+                            {% if is_in_my_list %}
+                                <input type="checkbox" name="watch" id="watch" checked>
                                 <h5 style="color: white;">Remove from my list:
                                     <input type="submit" class="btn btn-light" value="Remove">
                                 </h5>
                             {% else %}
+                                <input type="checkbox" name="watch" id="watch">
                                 <h5 style="color: white;">Add to my list:
                                     <input type="submit" class="btn btn-light" value="Add">
                                 </h5>
