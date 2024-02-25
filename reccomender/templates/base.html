@@ -53,16 +53,16 @@
                                             </a>
                                         </li>
                                         {% if not request.user.is_authenticated %}
-                                                <li class="nav-item">
+                                            <li class="nav-item">
                                                     <a href="{% url 'signup' %}" class="nav-link">
                                                         <span aria-hidden="true"></span>SignUp
                                                     </a>
-                                                </li>
-                                                <li class="nav-item">
+                                            </li>
+                                            <li class="nav-item">
                                                     <a href="{% url 'login' %}" class="nav-link">
                                                         <span aria-hidden="true"></span>Login
                                                     </a>
-                                                </li>
+                                            </li>
                                             {% else %}
                                                 <li class="nav-item">
                                                     <a href="{% url 'logout' %}" class="nav-link">
@@ -70,6 +70,12 @@
                                                     </a>
                                                 </li>
                                             {% endif %}
+                                        <li class="nav-item nav-button">
+                                            <a href="{% url 'filter_movies' %}" class="nav-link">
+                                                <span aria-hidden="true"></span>
+                                                Get Movie Recommendation
+                                            </a>
+                                        </li>
                                     </ul>
                                 </div>
                             </nav>
@@ -85,13 +91,12 @@
         <div class="content">
             <div class="container">
                 <div class="row">
-                    
+                    {% block content %}
+  
+                    {% endblock content %}
                 </div>
             </div>
         </div>
-        {% block content %}
-  
-        {% endblock content %}
     </main>
 
     <footer>
