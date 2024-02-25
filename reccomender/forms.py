@@ -1,6 +1,6 @@
 # forms.py
 from django import forms
-from .models import Genre,Language
+from .models import Genre,Language,Movie
 
 class GenreFilterForm(forms.Form):
     genre = forms.ModelMultipleChoiceField(
