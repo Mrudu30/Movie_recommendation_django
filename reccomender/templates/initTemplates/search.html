@@ -12,17 +12,11 @@
     <div class="col-xs-6 col-xs-offset-3">
         <form class="form-horizontal" role="search" method="post" id="searchform">
             <div class="form-group">
+                {% csrf_token %}
                 <div class="input-group">
                     <input type="text" class="form-control" id="search" style="font-size:large" name="q" value="{{ request.POST.q }}" placeholder= "Search Movies "/>
                     <button class='btn btn-success' style="font-size:large" type='submit'>Search</button>
                 </div>
-<div class="col-xs-6 col-xs-offset-3">
-    <form class="form-horizontal" role="search" method="post" id="searchform">
-        <div class="form-group">
-            {% csrf_token %}
-            <div class="input-group">
-                <input type="text" class="form-control" id="search" style="font-size:large" name="q" value="{{ request.POST.q }}" placeholder= "Search Movies "/>
-                <button class='btn btn-success' style="font-size:large" type='submit'>Search</button>
             </div>
         </form>
     </div>
