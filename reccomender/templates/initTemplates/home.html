@@ -20,21 +20,24 @@
 </style>
 
 <!-- Movie list -->
-    <div class="movie-content" >
+<div class="movie-add">
+    <h2 class="heading">Laest Movie</h2>
+    <div class="movie-content">
         {% if movies %}
-        {% for movie in movies %}
-            <div class="movies">
-                <div class="thumbnail">
-                    <a class="images" href="{% url 'detail' movie.id %}">
-                        <div class="elementor">
-                            <img src="{{ movie.pic.url}}" class="img-responsive">
-                        </div>
-                    </a>
-                    <center class="movie-text"><h5 class="na">{{movie.name}}</h5></center>
-                    <!-- <h5>{{movie.genre}}</h5> -->
+            {% for movie in movies %}
+                <div class="movies">
+                    <div class="thumbnail">
+                        <a class="images" href="{% url 'detail' movie.id %}">
+                            <div class="elementor">
+                                <img src="{{ movie.pic.url}}" class="img-responsive">
+                            </div>
+                        </a>
+                        <center class="movie-text"><h5 class="na">{{movie.name}}</h5></center>
+                        <!-- <h5>{{movie.genre}}</h5> -->
+                    </div>
                 </div>
-            </div>
             {% endfor %}
-            {% endif %}
+        {% endif %}
     </div>
+</div>
 {% endblock content %}
