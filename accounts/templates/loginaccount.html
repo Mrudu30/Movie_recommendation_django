@@ -1,19 +1,10 @@
 {% extends 'base.html' %}
 {% block content %}
-<style>
-    input{
-        width: 40%;
-        color: black;
-    }
-    *{
-      font-size: 2rem;
-    }
-</style>
 <div class="card mb-3 bg-black mx-auto d-block">
   <div class="row g-0">
     <div>
       <div class="card-body text-center text-light my-5">
-        <h5 style="font-size: 2rem;">Login</h5>
+        <h5>Login</h5>
         {% if error %}
         <div class="alert alert-danger mt-3" role="alert">
           {{ error }}
@@ -23,7 +14,7 @@
           <form method="POST">
             {% csrf_token %}
             {{ form.as_p }}
-            <button type="submit" class="btn btn-primary btn-lg" style="font-size: 2rem;">
+            <button type="submit" class="btn btn-primary btn-lg">
                 Login
             </button>
           </form>
