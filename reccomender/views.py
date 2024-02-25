@@ -6,6 +6,23 @@ from django.http import Http404
 from .forms import GenreFilterForm,LanguageFilterForm
 import time
 
+# video page
+def index(request):
+    return render(request,'index.html')
+
+# user specific mylist
+def mylist(request):
+
+    if not request.user.is_authenticated:
+        return redirect("login")
+    if not request.user.is_active:
+        raise Http404
+
+    movies = Movie.objects.filter(mylist__watch=True,mylist__user=request.user)
+   
+    return render(request, 'initTemplates/mylist.html', {'movies': movies})
+
+# home page
 def home(request):
     query = request.GET.get('q')
     if query:
@@ -18,6 +35,7 @@ def home(request):
     
     return render(request,'initTemplates/home.html',context)
 
+# detail page
 def detail(request, movie_id):
     if not request.user.is_authenticated:
         return redirect('login')
@@ -49,6 +67,7 @@ def detail(request, movie_id):
     context = {'movie': movie, 'is_in_my_list': is_in_my_list}
     return render(request, 'initTemplates/detail.html', context)
 
+# recomendation system
 def filter_movies(request):
     if not request.user.is_authenticated:
         return redirect("login")
@@ -79,17 +98,6 @@ def filter_movies(request):
 
     return render(request, 'filter/filtered_movies.html', {'movies': movies, 'genre_form': genre_form, 'language_form': language_form})
 
-
-def index(request):
-    return render(request,'index.html')
-
-def mylist(request):
-
-    if not request.user.is_authenticated:
-        return redirect("login")
-    if not request.user.is_active:
-        raise Http404
-
-    movies = Movie.objects.filter(mylist__watch=True,mylist__user=request.user)
-   
-    return render(request, 'initTemplates/mylist.html', {'movies': movies})
+# 404 page
+def page_404(request,execption):   
+    return render(request, 'errorpages/404_page.html', status=404)
