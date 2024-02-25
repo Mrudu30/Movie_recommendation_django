@@ -18,23 +18,4 @@ video.hide {
 
 
 
-/* Header */
 
-header .row{
-    align-items: center;
-}
-header .container-fulid{
-    padding: 0px 20px;
-}
-header .logo-col{
-    width: 20%;
-    flex: none;
-}
-header .navbar-brand{
-    width: 130px;
-    height: 110px;
-}
-header .log{
-    width: 100%;
-    height: 100%;
-}
