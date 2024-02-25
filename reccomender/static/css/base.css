@@ -67,7 +67,7 @@ input{
 
 header .row{
     align-items: center;
-    justify-content: spa;
+    justify-content: space-around;
 }
 header .container-fulid{
     padding: 0px 20px;
@@ -75,10 +75,11 @@ header .container-fulid{
 header .logo-col{
     width: 20%;
     flex: none;
+    padding-left: 60px;
 }
 header .navbar-brand{
-    width: 130px;
-    height: 110px;
+    width: 80px;
+    height: 85px;
     display: block;
     margin: 0px;
     padding: 0px;
@@ -87,9 +88,21 @@ header .logo{
     width: 100%;
     height: 100%;
 }
+.navbar{
+    padding: 0px;
+}
 .navbar-toggler{
     display: none;
 }
 .nav-menu{
     width: 80%;
+}
+.navbar-collapse{
+    justify-content: end;
+}
+.nav-item{
+    margin-right: 40px;
+}
+.navbar{
+    padding-right: 40px;
 }
