@@ -85,13 +85,12 @@
         <div class="content">
             <div class="container">
                 <div class="row">
-                    
+                    {% block content %}
+  
+                    {% endblock content %}
                 </div>
             </div>
         </div>
-        {% block content %}
-  
-        {% endblock content %}
     </main>
 
     <footer>

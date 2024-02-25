@@ -31,15 +31,17 @@
 <br>
 
 <!-- Movie list -->
-    <div class="row" >
+    <div class="movie-content" >
         {% if movies %}
         {% for movie in movies %}
-            <div class="col-sm-2 col-md-2">x
-                <div class="thumbnail" style="border-radius: 22px 22px 22px 22px;">
-                    <center><h5 class="na">{{movie.name}}</h5></center>
-                    <a href="{% url 'detail' movie.id %}">
-                        <img src="{{ movie.pic.url}}" class="img-responsive h-75" style="border-radius: 22px 22px 22px 22px;">
+            <div class="movies">x
+                <div class="thumbnail">
+                    <a class="images" href="{% url 'detail' movie.id %}">
+                        <div class="elementor">
+                            <img src="{{ movie.pic.url}}" class="img-responsive">
+                        </div>
                     </a>
+                    <center class="movie-text"><h5 class="na">{{movie.name}}</h5></center>
                     <!-- <h5>{{movie.genre}}</h5> -->
                 </div>
             </div>
