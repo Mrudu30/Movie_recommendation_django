@@ -12,56 +12,92 @@
     <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css'> 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
+<body class="bg-dark">
 
-<header>
-    <div class="header-menu">
-        <div class="container-fulid">
-            <div class="row">
-                <div class="col-lg-6 logo-col">
-                    <a class="navbar-brand" href="/">
-                        {% load static %}
-                        <img src="{% static '/images/logosvg.svg' %}" alt="logo" class="logo">
-                    </a>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                </div>
-                <div class="col-lg-6 nav-menu">
-                    <nav class="navbar navbar-expand-sm bg-dark navbar-dark sticky-top">
-                        <div class="collapse navbar-collapse" id="collapsibleNavbar">
-                            <ul class="nav navbar-nav navbar-right ul2">
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{% url 'home' %}">Home</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="{% url 'mylist' %}" class="nav-link">
-                                        <span aria-hidden="true"></span>
-                                    My List
-                                    </a>
-                                </li>
-                                {% if not request.user.is_authenticated %}
-                                        <li class="nav-item">
-                                            <a href="{% url 'signup' %}" class="nav-link">
-                                                <span aria-hidden="true"></span>SignUp
-                                            </a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a href="{% url 'login' %}" class="nav-link">
-                                                <span aria-hidden="true"></span>Login
-                                            </a>
-                                        </li>
-                                    {% else %}
-                                        <li class="nav-item">
-                                            <a href="{% url 'logout' %}" class="nav-link">
-                                                <span aria-hidden="true"></span>&nbsp;Logout
-                                            </a>
-                                        </li>
-                                    {% endif %}
-                            </ul>
+    <header>
+        <div class="header-menu">
+            <div class="container-fulid">
+                <div class="row">
+                    <div class="col-12">
+                        <form class="form-horizontal" role="search" method="post" id="searchform">
+                            <div class="form-group">
+                                {% csrf_token %}
+                                <div class="input-group">
+                                    <input type="text" class="search-input" id="search" name="q" value="{{ request.POST.q }}" placeholder= "Search Movies "/>
+                                    <button class='btn btn-success search-button' type='submit'>Search</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-12 menu-col">
+                        <div class="col-lg-6 logo-col">
+                            <a class="navbar-brand" href="/">
+                                {% load static %}
+                                <img src="{% static '/images/logosvg.svg' %}" alt="logo" class="logo">
+                            </a>
+                            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+                                <span class="navbar-toggler-icon"></span>
+                            </button>
                         </div>
-                    </nav>
+                        <div class="col-lg-6 nav-menu">
+                            <nav class="navbar navbar-expand-sm navbar-dark sticky-top">
+                                <div class="collapse navbar-collapse" id="collapsibleNavbar">
+                                    <ul class="nav navbar-nav navbar-right ul2">
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="{% url 'home' %}">Home</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href="{% url 'mylist' %}" class="nav-link">
+                                                <span aria-hidden="true"></span>
+                                            My List
+                                            </a>
+                                        </li>
+                                        {% if not request.user.is_authenticated %}
+                                                <li class="nav-item">
+                                                    <a href="{% url 'signup' %}" class="nav-link">
+                                                        <span aria-hidden="true"></span>SignUp
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a href="{% url 'login' %}" class="nav-link">
+                                                        <span aria-hidden="true"></span>Login
+                                                    </a>
+                                                </li>
+                                            {% else %}
+                                                <li class="nav-item">
+                                                    <a href="{% url 'logout' %}" class="nav-link">
+                                                        <span aria-hidden="true"></span>&nbsp;Logout
+                                                    </a>
+                                                </li>
+                                            {% endif %}
+                                    </ul>
+                                </div>
+                            </nav>
+                        </div>
+                    </div>
+                    
                 </div>
             </div>
         </div>
+    </header>
+
+    <div>
+        {% block content %}
+  
+        {% endblock content %}
     </div>
-</header>
+
+    <footer>
+        <nav class="navbar navbar-bottom bg-black mx-auto d-block">
+            <footer class="page-footer font-small">
+                <hr>
+                  <div class="text-center center-block">
+                        <a href="https://github.com/Mrudu30" target="_blank"><i id="social-git"class="fa fa-github-square fa-3x" style="color:#fff"></i></a>
+                    </div>
+                <div class="footer-copyright text-center py-3">© 2023
+                    <a href="https://github.com/Mrudu30" style="color:#fff">Cinephiles Project</a>
+                </div>
+            </footer>
+        </nav>
+    </footer>
+</body>
