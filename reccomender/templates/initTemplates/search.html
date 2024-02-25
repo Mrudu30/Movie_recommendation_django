@@ -7,6 +7,7 @@
 {% else %}
 <center style="color:#fff; text-transform: capitalize;"><h2>Welcome {{user.username}}!!</h2></center>
 {% endif %}
+
 <style>
     .thumbnail p, .thumbnail h4 {
         white-space: nowrap;
@@ -35,13 +36,14 @@
         {% for movie in movies %}
             <div class="movies">
                 <div class="thumbnail">
-                    <a href="{% url 'detail' movie.id %}">
+                    <a class="images" href="{% url 'detail' movie.id %}">
                         <div class="elementor">
-                            <img src="{{ movie.pic.url}}" class="img-responsive h-75">
+                            <img src="{{ movie.pic.url}}" class="img-responsive">
                         </div>
                     </a>
+                    <center class="movie-text"><h5 class="na">{{movie.name}}</h5></center>
+                    <!-- <h5>{{movie.genre}}</h5> -->
                 </div>
-                <center><h5 class="na">{{movie.name}}</h5></center>
             </div>
             {% endfor %}
             {% endif %}
