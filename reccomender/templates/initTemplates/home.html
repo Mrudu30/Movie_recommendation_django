@@ -11,6 +11,7 @@
 <div class="container" >
 <div class="col-xs-6 col-xs-offset-3">
     <form class="form-horizontal" role="search" method="post" id="searchform">
+        {% csrf_token %}
         <div class="form-group">
             <div class="input-group">
                 <input type="text" class="form-control" id="search" style="font-size:large" name="q" value="{{ request.POST.q }}" placeholder= "Search Movies "/>
