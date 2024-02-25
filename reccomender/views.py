@@ -16,10 +16,16 @@ def mylist(request):
     if not request.user.is_authenticated:
         return redirect("login")
     if not request.user.is_active:
-        raise Http404
+        return render(request, 'errorpages/404_page.html', status=404)
+
+    query = request.POST.get('q')
+    if query:
+        movies = Movie.objects.filter(Q(
+            name__icontains=query)).distinct()
+        context =  {'movies': movies}
+        return render(request,'initTemplates/search.html',context)
 
     movies = Movie.objects.filter(mylist__watch=True,mylist__user=request.user)
-   
     return render(request, 'initTemplates/mylist.html', {'movies': movies})
 
 # home page
@@ -49,7 +55,7 @@ def detail(request, movie_id):
         return render(request,'initTemplates/search.html',context)
 
     if not request.user.is_active:
-        raise Http404
+        return render(request, 'errorpages/404_page.html', status=404)
 
     movie = get_object_or_404(Movie, id=movie_id)
     is_in_my_list = MyList.objects.filter(user=request.user, movie=movie).exists()
@@ -80,7 +86,7 @@ def filter_movies(request):
     if not request.user.is_authenticated:
         return redirect("login")
     if not request.user.is_active:
-        raise Http404
+        return render(request, 'errorpages/404_page.html', status=404)
     
     query = request.POST.get('q')
     if query:
@@ -114,5 +120,5 @@ def filter_movies(request):
     return render(request, 'filter/filtered_movies.html', {'movies': movies, 'genre_form': genre_form, 'language_form': language_form})
 
 # 404 page
-def page_404(request,execption):   
+def page_404(request,exception):   
     return render(request, 'errorpages/404_page.html', status=404)

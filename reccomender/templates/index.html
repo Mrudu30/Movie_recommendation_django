@@ -7,12 +7,10 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
 </head>
 <body style="overflow: hidden;">
-        <video autoplay="true" controls preload="metadata">
+        <video autoplay="true" preload="metadata">
             <source src='static/videos/stv.mp4' type="video/mp4">
             Your browser does not support the video tag.
         </video>
-        <!-- Add a button to skip the video -->
-        <button id="skip-button">Skip Video</button>
     
     <!-- Other content goes here -->
 
@@ -22,19 +20,11 @@
             window.location.href = 'home';  // Replace '/home/' with the actual URL of your home page
         }
 
-        // Hide the video when the skip button is clicked and redirect
-        document.getElementById('skip-button').addEventListener('click', function() {
-            var video = document.querySelector('video');
-            video.classList.add('hide');
-            redirectToHomePage();
-        });
-
         // Hide the video after 7 seconds (7000 milliseconds) and redirect
         setTimeout(function() {
             var video = document.querySelector('video');
-            video.classList.add('hide');
             redirectToHomePage();
-        }, 7000);
+        }, 5000);
     </script>
 </body>
 </html>
