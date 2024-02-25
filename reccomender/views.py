@@ -24,7 +24,7 @@ def mylist(request):
 
 # home page
 def home(request):
-    query = request.GET.get('q')
+    query = request.POST.get('q')
     if query:
         movies = Movie.objects.filter(Q(
             name__icontains=query)).distinct()
