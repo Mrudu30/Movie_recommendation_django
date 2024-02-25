@@ -40,6 +40,13 @@ def home(request):
 def detail(request, movie_id):
     if not request.user.is_authenticated:
         return redirect('login')
+    
+    query = request.POST.get('q')
+    if query:
+        movies = Movie.objects.filter(Q(
+            name__icontains=query)).distinct()
+        context =  {'movies': movies}
+        return render(request,'initTemplates/search.html',context)
 
     if not request.user.is_active:
         raise Http404
@@ -74,6 +81,13 @@ def filter_movies(request):
         return redirect("login")
     if not request.user.is_active:
         raise Http404
+    
+    query = request.POST.get('q')
+    if query:
+        movies = Movie.objects.filter(Q(
+            name__icontains=query)).distinct()
+        context =  {'movies': movies}
+        return render(request,'initTemplates/search.html',context)
     
     genre_form = GenreFilterForm(request.GET)
     language_form = LanguageFilterForm(request.GET)
