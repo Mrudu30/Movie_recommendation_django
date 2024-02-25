@@ -29,6 +29,7 @@ def home(request):
         movies = Movie.objects.filter(Q(
             name__icontains=query)).distinct()
         context =  {'movies': movies}
+        return render(request,'initTemplates/search.html',context)
     else:
         movies = Movie.objects.all()
         context =  {'movies': movies}
