@@ -10,7 +10,9 @@ def signupaccount(request):
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
         if form.is_valid():
-            user = form.save()  # Automatically hashes the password
+            user = form.save(commit=False)
+            user.email = request.POST['email']
+            user.save()
             login(request, user)
             next_url = request.GET.get('next', 'home')  # Redirect to 'next' URL or 'home'
             return redirect(next_url)
