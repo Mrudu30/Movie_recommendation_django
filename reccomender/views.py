@@ -58,8 +58,16 @@ def detail(request, movie_id):
 
     if not request.user.is_active:
         return render(request, 'errorpages/404_page.html', status=404)
-
+    
     movie = get_object_or_404(Movie, id=movie_id)
+    
+    if request.method == 'POST':
+        newcomment = request.POST.get('newcomment')
+        if newcomment:
+            commentuser = request.user
+            commentmovie = movie
+            Comments.objects.create(user=commentuser,movie=commentmovie,comment=newcomment)
+        
     is_in_my_list = MyList.objects.filter(user=request.user, movie=movie).exists()
     comments = Comments.objects.filter(movie=movie)
     

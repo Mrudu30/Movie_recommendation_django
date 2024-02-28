@@ -43,7 +43,7 @@
                     <div class="commet-box">
                         <form method="post">
                             {% csrf_token %}
-                            <textarea name="comment" id="comment" cols="30" rows="10" placeholder="Add Your Comments"></textarea>
+                            <textarea name="newcomment" id="comment" cols="30" rows="10" placeholder="Add Your Comments/Review"></textarea>
                             <input type="submit" value="Add Comment" class="btn btn-light add-comment">
                         </form>
                     </div>
@@ -57,7 +57,13 @@
         <tbody>
             {% if comments %}
                 {% for comment in comments %}
-                    <tr class="text-white">
+                    <tr class="text-white" id="comment_{{comment.id}}">
+                        {% if request.user == comment.user %}
+                            <td>
+                                <button onclick="edit_comment('{{comment.id}}')">Edit</button>  
+                                <button onclick="delete_comment('{{comment.id}}')">Delete</button>
+                            </td>
+                        {% endif %}
                         <td>{{ comment.user.username }}</td>
                         <td>{{ comment.comment }}</td>
                     </tr>

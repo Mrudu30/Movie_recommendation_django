@@ -13,3 +13,8 @@ $(document).ready(function () {
     })
 
 });
+function edit_comment(id){
+    var edit_id = parseInt(id)
+    var edit_comment_id = "comment_"+edit_id
+    // $('#'+edit_comment_id).
+}
