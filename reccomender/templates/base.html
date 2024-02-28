@@ -25,7 +25,10 @@
                         <form class="form-horizontal" role="search" method="post" id="searchform">
                             <div class="form-group">
                                 {% csrf_token %}
-                                <div class="input-group">
+                                <span class="toggler-search-icon">
+                                    <i class="fa fa-search" aria-hidden="true"></i>
+                                </span>
+                                <div class="input-group search">
                                     <input type="text" class="search-input" id="search" name="q" value="{{ request.POST.q }}" placeholder= "Search Movies "/>
                                     <button class='btn btn-success search-button button-css' type='submit'>Search</button>
                                 </div>
@@ -36,49 +39,46 @@
                                 <i class="fa-solid fa-bars"></i>
                             </span>
                         </button>
-                        <div class="offcanvas-menu">
-                            <nav>
-                                <div>
-                                    <a href="#"> <i class="fab fa-css3-alt"></i>offcanvas </a>
-                                    <label for="toogle-menu" class="toogle-close">
-                                        <span></span>
-                                    </label>
-                                </div>
-                                <ul class="nav navbar-nav navbar-right ul2">
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="{% url 'home' %}">Home</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="{% url 'mylist' %}" class="nav-link">
-                                            <span aria-hidden="true"></span>
-                                        My List
-                                        </a>
-                                    </li>
-                                    {% if not request.user.is_authenticated %}
+                        <div class="offcanvas offcanvas-end">
+                            <button type="button" class="btn-close text-reset" data-dismiss="offcanvas" aria-label="Close"></button>
+                            <nav class="navbar navbar-expand-sm navbar-dark sticky-top">
+                                <div class="collapse navbar-collapse" id="collapsibleNavbar">
+                                    <ul class="nav navbar-nav navbar-right ul2">
                                         <li class="nav-item">
-                                                <a href="{% url 'signup' %}" class="nav-link">
-                                                    <span aria-hidden="true"></span>SignUp
-                                                </a>
+                                            <a class="nav-link" href="{% url 'home' %}">Home</a>
                                         </li>
                                         <li class="nav-item">
-                                                <a href="{% url 'login' %}" class="nav-link">
-                                                    <span aria-hidden="true"></span>Login
-                                                </a>
+                                            <a href="{% url 'mylist' %}" class="nav-link">
+                                                <span aria-hidden="true"></span>
+                                            My List
+                                            </a>
                                         </li>
-                                        {% else %}
+                                        {% if not request.user.is_authenticated %}
                                             <li class="nav-item">
-                                                <a href="{% url 'logout' %}" class="nav-link">
-                                                    <span aria-hidden="true"></span>&nbsp;Logout
-                                                </a>
+                                                    <a href="{% url 'signup' %}" class="nav-link">
+                                                        <span aria-hidden="true"></span>SignUp
+                                                    </a>
                                             </li>
-                                        {% endif %}
-                                    <li class="nav-item nav-button">
-                                        <a href="{% url 'filter_movies' %}" class="nav-link">
-                                            <span aria-hidden="true"></span>
-                                            Get Movie Recommendation
-                                        </a>
-                                    </li>
-                                </ul>
+                                            <li class="nav-item">
+                                                    <a href="{% url 'login' %}" class="nav-link">
+                                                        <span aria-hidden="true"></span>Login
+                                                    </a>
+                                            </li>
+                                            {% else %}
+                                                <li class="nav-item">
+                                                    <a href="{% url 'logout' %}" class="nav-link">
+                                                        <span aria-hidden="true"></span>&nbsp;Logout
+                                                    </a>
+                                                </li>
+                                            {% endif %}
+                                        <li class="nav-item nav-button">
+                                            <a href="{% url 'filter_movies' %}" class="nav-link">
+                                                <span aria-hidden="true"></span>
+                                                Get Movie Recommendation
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
                             </nav>
                         </div>
                     </div>
