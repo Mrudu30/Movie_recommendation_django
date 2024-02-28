@@ -2,9 +2,8 @@ from django.shortcuts import redirect,render,get_object_or_404
 from django.db.models import Q
 from .models import Movie,MyList,Comments
 from django.contrib import messages
-from django.http import Http404
+from django.http import Http404,JsonResponse
 from .forms import GenreFilterForm,LanguageFilterForm
-import time
 
 # video page
 def index(request):
@@ -86,6 +85,14 @@ def detail(request, movie_id):
 
     context = {'movie': movie, 'is_in_my_list': is_in_my_list,'comments':comments}
     return render(request, 'initTemplates/detail.html', context)
+
+# comment edit and delete
+def deleteComment(request,id):
+    comment = get_object_or_404(Comments, id=id)
+    
+    if request.method == 'POST':
+        comment.delete()
+        return JsonResponse({"status":"success"})
 
 # recomendation system
 def filter_movies(request):
