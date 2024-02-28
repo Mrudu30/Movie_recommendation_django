@@ -38,8 +38,9 @@ def home(request):
         return render(request,'initTemplates/search.html',context)
 
     latest_movies = Movie.objects.order_by('-date_of_release')[:10]
+    comedy_movies = Movie.objects.filter(genre__name='Comedy').order_by('-date_of_release')
     movies = Movie.objects.all()
-    context =  {'movies': movies,'latest_movies':latest_movies}
+    context =  {'movies': movies,'latest_movies':latest_movies,'comedy_movies':comedy_movies}
     
     return render(request,'initTemplates/home.html',context)
 

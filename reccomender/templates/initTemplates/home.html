@@ -46,6 +46,28 @@
 </div>
 
 <div class="movie-add">
+    <h2 class="heading">Comedy Movies:</h2>
+    <div class="movie-content">
+        {% if comedy_movies %}
+            {% for movie in comedy_movies %}
+                <div class="movies">
+                    <div class="thumbnail">
+                        <a class="images" href="{% url 'detail' movie.id %}">
+                            <div class="elementor">
+                                <img src="{{ movie.pic.url}}" class="img-responsive">
+                            </div>
+                        </a>
+                        <center class="movie-text"><h5 class="na">{{movie.name}}</h5></center>
+                        <!-- <h5>{{movie.genre}}</h5> -->
+                    </div>
+                </div>
+            {% endfor %}
+            <hr>
+        {% endif %}
+    </div>
+</div>
+
+<div class="movie-add">
     <h2 class="heading">All Movies:</h2>
     <div class="movie-content">
         {% if movies %}

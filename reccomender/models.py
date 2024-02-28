@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.utils import timezone
 # Create your models here.
 # genre for all movies
 class Genre(models.Model):
@@ -52,6 +53,7 @@ class Comments(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     movie = models.ForeignKey(Movie, on_delete=models.CASCADE)
     comment = models.TextField(max_length=500)
+    date_added = models.DateTimeField(default=timezone.now)
     
     def __str__(self):
         return f"Comment by {self.user.username} on {self.movie.name}"

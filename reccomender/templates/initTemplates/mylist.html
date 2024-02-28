@@ -25,14 +25,14 @@
             <div class="thumbnail">
                 <h4>{{movie.name}}</h4>
                 <a href="{% url 'detail' movie.id %}">
-                    <img src="{{ movie.pic.url}}" class="img-responsive h-75">
+                    <img src="{{ movie.pic.url}}" class="img-responsive h-75 rounded-3">
                 </a>
             </div>
         </div>
     {% endfor %}
     {% else %}
         <div class="alert alert-danger">
-            <strong>Sorry!</strong> No movies in your list.
+            <strong class="text-dark">Sorry!</strong> No movies in your list.
         </div>
     {% endif %}
 </div>

@@ -56,12 +56,19 @@
                     </form>
                 </td>
             </tr>
-            {% for comment in comments %}
-                <tr>
-                    <td>{{ comment.user.username }}</td>
-                    <td>{{ comment.comment }}</td>
+            
+            {% if comments %}
+                {% for comment in comments %}
+                    <tr class="text-white">
+                        <td>{{ comment.user.username }}</td>
+                        <td>{{ comment.comment }}</td>
+                    </tr>
+                {% endfor %}
+            {% else %}
+                <tr class="text-white">
+                    <td>Be The First To Give A Review</td>
                 </tr>
-            {% endfor %}
+            {% endif %}
         </tbody>
     </table>
 </div>
