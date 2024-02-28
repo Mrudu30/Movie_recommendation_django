@@ -1,7 +1,6 @@
 $(document).ready(function () {
     console.log("jquery loaded")
 });
-console.log("jquery loaded")
 function edit_comment(id){
     var edit_id = parseInt(id)
     var edit_comment_id = "comment_"+edit_id
