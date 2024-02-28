@@ -193,3 +193,77 @@ header{
 .nav-item:last-child{
     margin-right: 0px;
 }
+
+.signup table tbody tr input , .login table tbody tr input{
+    background-color: #f9f9fa;
+    font-size: 16px;
+    float: left;
+    height: 50px;
+    padding-right: 20px;
+    width: 100%;
+}
+.signup table tbody tr label{
+    color: #fff;
+    margin-bottom: 10px;
+}
+.login{
+    width: 50%;
+    margin: 0 auto;
+    padding-top: 20px;
+}
+.login table{
+    width: 100%;
+}
+.signup{
+    width: 90%;
+    margin: 0 auto;
+    padding-top: 20px;
+}
+.form-header{
+    text-align: center;
+    margin-bottom: 10px;
+    color: #000;
+}
+.signup-button{
+    width: 100%;
+    margin-top: 20px;
+    height: 45px;
+    font-size: 18px;
+    background: red;
+    border: none;
+}
+.signup-button:hover{
+    background-color: red;
+}
+.back-login{
+    font-size: 18px;
+}
+.back-login a{
+    text-decoration: none;
+    font-weight: bold;
+}
+.login td{
+    padding-bottom: 20px;
+}
+.login td p {
+    margin-bottom: 0px;
+    text-align: center;
+}
+.login tr:last-child td{
+    padding-bottom: 0px;
+}
+.login-form{
+    width: 50%;
+    margin: 0 auto;
+    background: #fff;
+    border-radius: 20px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    margin-top: 0px!important;
+}
+.login td:last-child .signup-button{
+    margin-top: 0px;
+}
+.input-group{
+    margin-top: 20px;
+}
