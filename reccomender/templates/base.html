@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://kit.fontawesome.com/20d64ff52b.js" crossorigin="anonymous"></script>
+    <script src="{% static '/js/script.js' %}" type="text/javascript"></script>
 </head>
 <body class="bg-dark">
 
@@ -30,11 +31,56 @@
                                 </div>
                             </div>
                         </form>
-                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
-                            <span class="navbar-toggler-icon">
+                        <button class="toggler-button" type="button">
+                            <span class="toggler-icon">
                                 <i class="fa-solid fa-bars"></i>
                             </span>
                         </button>
+                        <div class="offcanvas-menu">
+                            <nav>
+                                <div>
+                                    <a href="#"> <i class="fab fa-css3-alt"></i>offcanvas </a>
+                                    <label for="toogle-menu" class="toogle-close">
+                                        <span></span>
+                                    </label>
+                                </div>
+                                <ul class="nav navbar-nav navbar-right ul2">
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{% url 'home' %}">Home</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="{% url 'mylist' %}" class="nav-link">
+                                            <span aria-hidden="true"></span>
+                                        My List
+                                        </a>
+                                    </li>
+                                    {% if not request.user.is_authenticated %}
+                                        <li class="nav-item">
+                                                <a href="{% url 'signup' %}" class="nav-link">
+                                                    <span aria-hidden="true"></span>SignUp
+                                                </a>
+                                        </li>
+                                        <li class="nav-item">
+                                                <a href="{% url 'login' %}" class="nav-link">
+                                                    <span aria-hidden="true"></span>Login
+                                                </a>
+                                        </li>
+                                        {% else %}
+                                            <li class="nav-item">
+                                                <a href="{% url 'logout' %}" class="nav-link">
+                                                    <span aria-hidden="true"></span>&nbsp;Logout
+                                                </a>
+                                            </li>
+                                        {% endif %}
+                                    <li class="nav-item nav-button">
+                                        <a href="{% url 'filter_movies' %}" class="nav-link">
+                                            <span aria-hidden="true"></span>
+                                            Get Movie Recommendation
+                                        </a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
                     </div>
                     <div class="col-12 menu-col">
                         <div class="col-lg-6 logo-col">
@@ -83,6 +129,7 @@
                                     </ul>
                                 </div>
                             </nav>
+                           
                         </div>
                     </div>
                     

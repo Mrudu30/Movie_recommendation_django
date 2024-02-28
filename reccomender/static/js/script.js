@@ -1,3 +1,5 @@
 $(document).ready(function(){
-    $(".mobile-navbar").toggleClass('.mobile-navbar-open')
+    $(".toggler-button").on( 'click' , function(){
+        $(".offcanvas-menu").toggleClass('offcanvas-start')
+    })
 })
