@@ -9,15 +9,15 @@
 <body>
     <!-- template.html -->
 <form class="filter-form" method="get" action="{% url 'filter_movies' %}">
-    <div class="form-group">
-        <label for="{{ genre_form.genre.id_for_label }}">Select Genres:</label>
+    <div class="form-group genre">
+        <label for="{{ genre_form.genre.id_for_label }}" class="genre-heading">Select Genres:</label>
         {{ genre_form.genre }}
     </div>
     <div class="form-group">
-        <label for="{{ language_form.languages.id_for_label }}">Select Languages:</label>
+        <label for="{{ language_form.languages.id_for_label }}" class="language-heading">Select Languages:</label>
         {{ language_form.languages }}
     </div>
-    <button class="filter-button" type="submit" style="font-size: 2rem;">Filter Movies</button>
+    <button class="filter-button button-css" type="submit">Filter Movies</button>
 </form>
 
 </body>
