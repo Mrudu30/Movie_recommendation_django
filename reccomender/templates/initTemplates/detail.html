@@ -46,11 +46,30 @@
                             <input type="submit" value="Add Comment" class="btn btn-light add-comment">
                         </form>
                     </div>
+
+                    <div class="comment-section">
+                        <h4>Comment Section</h4>
+                        {% if comments %}
+                            {% for comment in comments %}
+                                <div class="card" id="comment_{{comment.id}}">
+                                    <div class="card-header">
+                                        <h4>{{ comment.user.username }}</h4>
+                                        {% if request.user == comment.user %}
+                                            <button onclick="delete_comment('{{comment.id}}')" class="delete">Delete</button>
+                                        {% endif %}
+                                    </div>
+                                    <div class="card-body">
+                                        <p>{{ comment.comment }}</p>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        {% endif %}
+                    </div>
                 </td>
             </tr>
         </tbody>
     </table>
-<div class="sec-row">
+<!-- <div class="sec-row">
     <table>
         <tbody>
             {% if comments %}
@@ -75,4 +94,4 @@
     </table>
     
 </div>
-{% endblock content %}
+{% endblock content %} -->

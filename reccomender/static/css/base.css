@@ -319,10 +319,14 @@ header .input-group{
 }
 .heading-movie{
     margin-left: 0px;
-    margin-top: 20px;
-    margin-bottom: 10px;
+    margin-bottom: 30px;
     font-size: 35px;
     color: #fff;
+    text-align: center;
+}
+body .slick-slider{
+    margin-bottom: 0px;
+    height: auto;
 }
 .movie-title{
     color: #fff;
@@ -572,4 +576,36 @@ body .form-horizontal{
     border-left: 1px solid rgba(0,0,0,.2);
     transform: translateX(100%);
     transform: translateX(100%)
+}
+.card-header{
+    display: flex;
+    justify-content: space-between;
+}
+.card-header h4{
+    color: #000;
+}
+.comment-section{
+    margin-top: 30px;
+    max-height: 500px;
+    overflow-y: auto;
+    border-radius: 10px;
+}
+.delete{
+    background-color: #000;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 15px;
+}
+.card:first-child{
+    margin-top: 0px;
+}
+.card{
+    margin-top: 20px;
+}
+.slick-slide{
+    height: auto;
+}
+.slick-initialized .slick-slide{
+    padding: 0px 10px;
 }
