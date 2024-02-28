@@ -52,6 +52,13 @@
             </td>
         </tr>
         <tbody  style="color:#fff;">
+            <tr>
+                <form method="post">
+                    {% csrf_token %}
+                    <textarea name="comment" id="comment" cols="30" rows="10" placeholder="Add Your Comments"></textarea>
+                    <input type="submit" value="Add Comment">
+                </form>
+            </tr>
             {% for comment in comments %}
               <tr>
                 <td>{{ comment.user.username }}</td>
