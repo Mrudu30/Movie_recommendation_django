@@ -1,6 +1,6 @@
 from django.shortcuts import redirect,render,get_object_or_404
 from django.db.models import Q
-from .models import Movie,MyList
+from .models import Movie,MyList,Comments
 from django.contrib import messages
 from django.http import Http404
 from .forms import GenreFilterForm,LanguageFilterForm
@@ -59,26 +59,22 @@ def detail(request, movie_id):
 
     movie = get_object_or_404(Movie, id=movie_id)
     is_in_my_list = MyList.objects.filter(user=request.user, movie=movie).exists()
-
+    comments = Comments.objects.filter(movie=movie)
+    
     if request.method == 'POST':
         watch_flag = request.POST.get('watch', False)
-        if watch_flag == 'on':
-            if not is_in_my_list:
-                # Add movie to user's list
-                MyList.objects.create(user=request.user, movie=movie)
+        watch_flag = watch_flag == 'on' 
+        if watch_flag:
+            my_list, created = MyList.objects.get_or_create(user=request.user, movie=movie)
+            if created:
                 messages.success(request, f'{movie.name} added to your list.')
-
-            if is_in_my_list:
-                # Remove movie from user's list
-                MyList.objects.filter(user=request.user, movie=movie).delete()
+            else:
+                my_list.delete()
                 messages.success(request, f'{movie.name} removed from your list.')
-                time.sleep(2)
-                return redirect('mylist')
-
-        # Redirect back to the movie detail page
+            return redirect('detail', movie_id=movie_id)
         return redirect('detail', movie_id=movie_id)
 
-    context = {'movie': movie, 'is_in_my_list': is_in_my_list}
+    context = {'movie': movie, 'is_in_my_list': is_in_my_list,'comments':comments}
     return render(request, 'initTemplates/detail.html', context)
 
 # recomendation system
