@@ -124,7 +124,7 @@ header .logo{
 }
 .search-input{
     width: 400px;
-    padding: 7px 15px;
+    padding: 8px 15px;
     border-top-left-radius: 20px;
     border-bottom-left-radius: 20px;
     border: none;
@@ -187,7 +187,7 @@ header .logo{
     border-radius: 6px;
 }
 header{
-    padding-bottom: 50px;
+    padding-bottom: 20px;
     position: relative;
 }
 .nav-item:last-child{
@@ -264,8 +264,9 @@ header{
 .login td:last-child .signup-button{
     margin-top: 0px;
 }
-.input-group{
+header .input-group{
     margin-top: 20px;
+    align-items: center;
 }
 .movie-add{
     padding-top: 50px;
@@ -334,17 +335,80 @@ header{
 #id_genre div{
     width: 50%;
 }
-#id_genre div label{
+#id_genre div label ,  #id_languages div label{
     font-size: 20px;
 }
-#id_genre div label input[type = "checkbox"]{
+#id_genre div label input[type = "checkbox"],#id_languages div label input{
     width: 18px;
     height: 18px;
     margin-right: 10px;
 }
-#id_genre div label input[type = "checkbox"]::before{
-    width: 19px;
-    height: 19px;
-    border: 1px solid;
-    content: ""
+.filter-button{
+    background-color: red;
+    border: 0px;
+    border-radius: 10px;
+    color: #fff;
+    padding: 10px 15px;
+}
+.genre-heading, .language-heading{
+    font-size: 22px;
+}
+.genre{
+    padding-bottom: 20px;
+}
+h1 , h2 , h3 , h4 , h5{
+    color: #fff;
+    margin-left: 0px;
+}
+.btn-check:focus+.btn-primary, .btn-primary:focus{
+    background-color: red;
+    border-color: red;
+    box-shadow: none;
+}
+.form-control:focus{
+    box-shadow: none;
+    border-color: #ced4da;
+}
+.button-css{
+    font-size: 16px;
+    background-color: red;
+    color: #fff;
+}
+.btn-check:focus+.btn-success, .btn-success:focus{
+    background-color: red;
+    box-shadow: none;
+}
+.btn-success:hover{
+    background-color: red;
+}
+:focus-visible{
+    outline: none;
+}
+footer{
+    padding-top: 75px;
+}
+
+@media screen and (max-width : 1180px) {
+    header .input-group{
+        margin-top: 0px;
+    }
+    header .navbar-brand{
+        width: 350px;
+        margin-top: 10px;
+    }
+}
+@media screen and (max-width : 1080px) {
+    .navbar-toggler{
+        display: block;
+    }
+    .mobile-nav{
+        display: flex;
+    }
+    .fa-bars{
+        color: #fff;
+        font-size: 25px;
+    }
+    .mobile-navbar{
+        display: none;
+    }
 }

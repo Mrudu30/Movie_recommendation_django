@@ -19,16 +19,21 @@
         <div class="header-menu">
             <div class="container-fulid">
                 <div class="row">
-                    <div class="col-12">
+                    <div class="col-12 mobile-nav">
                         <form class="form-horizontal" role="search" method="post" id="searchform">
                             <div class="form-group">
                                 {% csrf_token %}
                                 <div class="input-group">
                                     <input type="text" class="search-input" id="search" name="q" value="{{ request.POST.q }}" placeholder= "Search Movies "/>
-                                    <button class='btn btn-success search-button' type='submit'>Search</button>
+                                    <button class='btn btn-success search-button button-css' type='submit'>Search</button>
                                 </div>
                             </div>
                         </form>
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+                            <span class="navbar-toggler-icon">
+                                <i class="fa-solid fa-bars"></i>
+                            </span>
+                        </button>
                     </div>
                     <div class="col-12 menu-col">
                         <div class="col-lg-6 logo-col">
@@ -36,12 +41,9 @@
                                 {% load static %}
                                 <img src="{% static '/images/h-logo.svg' %}" alt="logo" class="logo">
                             </a>
-                            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
-                                <span class="navbar-toggler-icon"></span>
-                            </button>
                         </div>
                         <div class="col-lg-6 nav-menu">
-                            <nav class="navbar navbar-expand-sm navbar-dark sticky-top">
+                            <nav class="navbar navbar-expand-sm navbar-dark sticky-top mobile-navbar">
                                 <div class="collapse navbar-collapse" id="collapsibleNavbar">
                                     <ul class="nav navbar-nav navbar-right ul2">
                                         <li class="nav-item">
