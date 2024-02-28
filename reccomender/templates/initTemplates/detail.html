@@ -23,40 +23,38 @@
                 <td width="50%" class="right-part">
                     <h1 style="color:#fff">{{ movie.name }}</h1>
                     <p class="desc">{{ movie.desc }}</p>
-                    <p>Date of Release: <b>{{ movie.date_of_release }}</b></p>
+                    <p class="date">Date of Release: <b>{{ movie.date_of_release }}</b></p>
                     <!-- Right Movie Info -->
                     <form class="form-horizontal" role="search" method="post" action="{% url 'detail' movie.id %}">
                         {% csrf_token %}
-                        <div class="input-group">
+                        <div class="input-group checkbox">
                             {% if is_in_my_list %}
-                                <input type="checkbox" name="watch" id="watch" checked>
-                                <h5 style="color: white;">Remove from my list:
-                                    <input type="submit" class="btn btn-light" value="Remove">
-                                </h5>
+                                <h5 class="add-remove-title">Remove from my list:</h5>
+                                <input type="checkbox" name="watch" id="watch" class="check">
+                                <input type="submit" class="btn btn-light add" value="Remove">
                             {% else %}
-                                <input type="checkbox" name="watch" id="watch" class="form-control">
-                                <h5 style="color: white;">Add to my list:</h5>
-                                <input type="submit" class="btn btn-light" value="Add">
+                                <h5 class="add-remove-title">Add to my list:</h5>
+                                <input type="checkbox" name="watch" id="watch" class="check">
+                                <input type="submit" class="btn btn-light add" value="Add">
                             {% endif %}
                         </div>
                     </form>
+
+                    <div class="commet-box">
+                        <form method="post">
+                            {% csrf_token %}
+                            <textarea name="comment" id="comment" cols="30" rows="10" placeholder="Add Your Comments"></textarea>
+                            <input type="submit" value="Add Comment" class="btn btn-light add-comment">
+                        </form>
+                    </div>
                 </td>
             </tr>
-            <tr>
-                <td class=" mx-auto d-block" style="color:#fff;" width="50%">
-                  
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <form method="post">
-                        {% csrf_token %}
-                        <textarea name="comment" id="comment" cols="30" rows="10" placeholder="Add Your Comments"></textarea>
-                        <input type="submit" value="Add Comment">
-                    </form>
-                </td>
-            </tr>
-            
+        </tbody>
+    </table>
+</div>
+<div class="sec-row">
+    <table>
+        <tbody>
             {% if comments %}
                 {% for comment in comments %}
                     <tr class="text-white">
@@ -71,5 +69,6 @@
             {% endif %}
         </tbody>
     </table>
+    
 </div>
 {% endblock content %}
