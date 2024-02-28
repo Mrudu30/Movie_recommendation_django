@@ -36,9 +36,10 @@ def home(request):
             name__icontains=query)).distinct()
         context =  {'movies': movies}
         return render(request,'initTemplates/search.html',context)
-    else:
-        movies = Movie.objects.all()
-        context =  {'movies': movies}
+
+    latest_movies = Movie.objects.order_by('-date_of_release')[:10]
+    movies = Movie.objects.all()
+    context =  {'movies': movies,'latest_movies':latest_movies}
     
     return render(request,'initTemplates/home.html',context)
 

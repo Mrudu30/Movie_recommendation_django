@@ -44,6 +44,9 @@ class MyList(models.Model):
     movie = models.ForeignKey(Movie, on_delete=models.CASCADE)
     watch = models.BooleanField(default=False)
     
+    def __str__(self):
+        return f"List of {self.user.username}  - {self.movie.name}"
+    
 # Adding comments under each movie
 class Comments(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
