@@ -1,20 +1,27 @@
 $(document).ready(function () {
-    
-    $("#search").on("keyup",function(){
-        var data = {'q': $(this).val()};
-        $.ajax({
-            type: "GET",
-            url: "{% url 'home' %}",
-            data: data,
-            success: function (response) {
-                console.log("successfully sent")
-            }
-        });
-    })
-
+    console.log("jquery loaded")
 });
+console.log("jquery loaded")
 function edit_comment(id){
     var edit_id = parseInt(id)
     var edit_comment_id = "comment_"+edit_id
+    $("#editCommentDiv").dialog({
+        autoOpen: false,
+        modal: true,
+        resizable: false,
+        width: 700,
+        title: 'Edit Comment',
+        buttons: {
+            "Close": function() {
+                $('#editCommentForm').trigger('reset');
+                $(this).dialog("close");
+            }
+        },
+        open: function (event, ui) {
+            $(".ui-dialog-titlebar-close").hide();
+        }
+    })
+    $("#editCommentDiv").dialog("open")
+    $("#editComment").val($("#"+edit_comment_id).val())
     // $('#'+edit_comment_id).
 }
