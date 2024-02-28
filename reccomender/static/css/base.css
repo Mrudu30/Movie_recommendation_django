@@ -316,3 +316,35 @@ header{
 .right-part{
     padding-left: 30px!important;
 }
+.heading-movie{
+    margin-left: 0px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-size: 35px;
+    color: #fff;
+}
+.movie-title{
+    color: #fff;
+    margin-bottom: 15px;
+}
+#id_genre {
+    display: flex;
+    flex-wrap: wrap;
+}
+#id_genre div{
+    width: 50%;
+}
+#id_genre div label{
+    font-size: 20px;
+}
+#id_genre div label input[type = "checkbox"]{
+    width: 18px;
+    height: 18px;
+    margin-right: 10px;
+}
+#id_genre div label input[type = "checkbox"]::before{
+    width: 19px;
+    height: 19px;
+    border: 1px solid;
+    content: ""
+}
