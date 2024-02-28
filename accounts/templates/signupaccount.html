@@ -3,8 +3,8 @@
 <div class="card mb-3 bg-dark mx-auto d-block">
   <div class="row g-0">
     <div>
-      <div class="card-body text-light my-5">
-        <h5 >Sign Up</h5>
+      <div class="card-body text-light my-5 login-form">
+        <h3 class="form-header">Sign Up</h3>
         {% if form.errors %}
         <ul>
           {% for field, errors in form.errors.items %}
@@ -15,35 +15,64 @@
           </ul>
         {% endif %}
         <p class="card-text">
-          <form method="POST">
+          <form method="POST" class="signup">
             {% csrf_token %}
-
-            <p>
-              <label for="id_username">Username:</label>
-              <input type="text" name="username" maxlength="150" autofocus="" required="" id="id_username">
-            </p>
-
-            <p>
-              <label for="id_email">Email:</label>
-              <input type="email" name="email" maxlength="320" required="" id="id_email">
-            </p>
-
-            <p>
-              <label for="id_password1">Password:</label>
-              <input type="password" name="password1" autocomplete="new-password" required="" id="id_password1">
-            </p>
-
-            <p>
-              <label for="id_password2">Password confirmation:</label>
-              <input type="password" name="password2" autocomplete="new-password" required="" id="id_password2">
-            </p>
-
-            <button type="submit" class="btn btn-primary">
-              Sign Up
-            </button>
+            <table class="table table-borderless table-responsive">
+              <tbody>
+                <tr>
+                  <td width="50%">
+                    <div class="input-group">
+                      <span class="input-group-text"><i class="fa-solid fa-user" aria-hidden="true"></i></span>
+                      <input type="text" name="username" maxlength="150" autofocus="" required="" id="id_username" placeholder="Username" class="form-control">
+                    </div>
+                    <!-- <label for="id_username">Username:</label>
+                    <input type="text" name="username" maxlength="150" autofocus="" required="" id="id_username" placeholder="Username"> -->
+                  </td>
+                  <td width="50%">  
+                      <div class="input-group">
+                        <span class="input-group-text"><i class="fa-solid fa-envelope" aria-hidden="true"></i></span>
+                        <input type="email" name="email" maxlength="320" required="" id="id_email" placeholder="Email" class="form-control">
+                      </div>
+                    <!-- <label for="id_email">Email:</label>
+                    <input type="email" name="email" maxlength="320" required="" id="id_email" placeholder="Email"> -->
+                  </td>
+                </tr>
+                <tr>
+                 
+                  <td width="50%">
+                    <div class="input-group">
+                      <span class="input-group-text"><i class="fa-solid fa-lock" aria-hidden="true"></i></span>
+                      <input type="password" name="password1" autocomplete="new-password" required="" id="id_password1" placeholder="Password" class="form-control">
+                    </div>
+                    <!-- <label for="id_password1">Password:</label>
+                    <input type="password" name="password1" autocomplete="new-password" required="" id="id_password1" placeholder="Password"> -->
+                  </td>
+                  <td width="50%">
+                    <div class="input-group">
+                      <span class="input-group-text"><i class="fa-solid fa-lock" aria-hidden="true"></i></span>
+                      <input type="password" name="password2" autocomplete="new-password" required="" id="id_password2" placeholder="Confirm Password" class="form-control">
+                    </div>
+                    <!-- <label for="id_password2">Password confirmation:</label>
+                    <input type="password" name="password2" autocomplete="new-password" required="" id="id_password2" placeholder="Confirm Password"> -->
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="2">
+                    <button type="submit" class="btn btn-primary signup-button">Sign Up</button>
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="2">
+                    <p class="back-login">
+                      Already have an account <a href="{% url 'login' %}">Login</a>
+                    </p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
           </form>
         </p>
-        Already have an account <a href="{% url 'login' %}">Login</a>
+       
       </div>
     </div>
   </div>
