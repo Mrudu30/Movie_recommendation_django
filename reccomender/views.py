@@ -25,7 +25,7 @@ def mylist(request):
         context =  {'movies': movies}
         return render(request,'initTemplates/search.html',context)
 
-    movies = Movie.objects.filter(mylist__watch=True,mylist__user=request.user)
+    movies = Movie.objects.filter(mylist__user=request.user)
     return render(request, 'initTemplates/mylist.html', {'movies': movies})
 
 # home page
