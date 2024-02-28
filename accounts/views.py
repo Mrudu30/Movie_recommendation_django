@@ -14,7 +14,7 @@ def signupaccount(request):
             user.email = request.POST['email']
             user.save()
             login(request, user)
-            next_url = request.GET.get('next', 'home')  # Redirect to 'next' URL or 'home'
+            next_url = request.GET.get('next', 'home')
             return redirect(next_url)
     else:
         form = UserCreationForm()
