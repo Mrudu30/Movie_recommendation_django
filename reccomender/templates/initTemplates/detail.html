@@ -11,21 +11,18 @@
 {% endif %}
 
 <div class="container-fluid">
-    <style>
-        * {
-            font-size: 2rem;
-        }
-    </style>
     <table>
         <tr>
-            <td class="col-lg-2">
+            <td class="">
                 <!-- Left Movie Info -->
                 <div class="thumbnail" style="border-radius: 22px;">
-                    <img src="{{ movie.pic.url }}" class="img-responsive h-75" style="border-radius: 22px;">
+                    <img src="{{ movie.pic.url }}" class="img-responsive h-50 w-25" style="border-radius: 22px;">
                     <h1 style="color:#fff">{{ movie.name }}</h1>
                 </div>
             </td>
-            <td class="col-lg-4 mx-auto d-block" style="color:#fff;">
+        </tr>
+        <tr>
+            <td class=" mx-auto d-block" style="color:#fff;">
                 {{ movie.desc }}
                 <br>
                     Date of Release: {{ movie.date_of_release }}
@@ -54,6 +51,14 @@
                 </form>
             </td>
         </tr>
+        <tbody  style="color:#fff;">
+            {% for comment in comments %}
+              <tr>
+                <td>{{ comment.user.username }}</td>
+                <td>{{ comment.comment }}</td>
+              </tr>
+            {% endfor %}
+        </tbody>
     </table>
 </div>
 {% endblock content %}
