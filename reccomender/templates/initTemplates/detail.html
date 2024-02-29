@@ -51,7 +51,7 @@
                         <h4>Comment Section</h4>
                         {% if comments %}
                             {% for comment in comments %}
-                                <div class="card" id="comment_{{comment.id}}">
+                                <div class="card">
                                     <div class="card-header">
                                         <h4>{{ comment.user.username }}</h4>
                                         {% if request.user == comment.user %}
@@ -60,10 +60,10 @@
                                         {% endif %}
                                     </div>
                                     <div class="card-body">
-                                        <p>{{ comment.comment }}</p>
+                                        <p id="comment_{{comment.id}}">{{ comment.comment }}</p>
                                         <div id="editCommentDiv_{{comment.id}}" style="display: none;">
                                             <!-- action="{% url 'edit_comment' comment.id %}" -->
-                                            <form method="post" id="editCommentForm_{{comment.id}}" action="{% url 'edit_comment' comment.id %}">
+                                            <form method="post" id="editCommentForm_{{comment.id}}">
                                                 {% csrf_token %}
                                                 <div class="form-group">
                                                   <label>Edit Comment:</label>

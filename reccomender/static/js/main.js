@@ -19,22 +19,53 @@ $(document).ready(function () {
 
 function edit_comment(id){
     var edit_id = parseInt(id)
-    var edit_comment_id = "comment_"+edit_id
     $("#editCommentDiv_"+edit_id).show()
-    console.log("#editCommentDiv_"+edit_id)
-    $("#editComment").val($("#"+edit_comment_id).val())
+    var oldComment = $("#comment_"+edit_id).text()
+    // console.log("#comment_"+edit_id)
+    // console.log(oldComment)
+    $("#editComment_"+edit_id).val(oldComment)
+
+    $("#editComment_"+edit_id).keyup(validateCommentForm)
+    $("#editComment_"+edit_id).blur(validateCommentForm)
 
     function validateCommentForm(){
-        var editeValue = $("#editedComment_"+edit_id).val()
-        if (!editeValue || editeValue == ""){
-            $("#Comment_help_"+edit_comment_id).text("You cannot leave the comment empty").addClass('text-danger')
+        var editeValue = $("#editComment_"+edit_id).val()
+        console.log(editeValue)
+        if (editeValue){
+            $("#Comment_help_"+edit_id).text("").removeClass('text-danger')
+            return true
+            }
+        else{
+            $("#Comment_help_"+edit_id).text("You cannot leave the comment empty").addClass('text-danger')
             return false
         }
-        else{
-            $("#Comment_help_"+edit_comment_id).text("").removeClass('text-danger')
-            return true
-        }
     }
+    
+    $("#editCommentForm_"+edit_id).submit(function(e){
+        e.preventDefault()
+        if (validateCommentForm()){
+            $.ajax({
+                type: "POST",
+                url: "/editComment/"+edit_id+"/",
+                headers: {
+                    'X-CSRFToken': csrfToken 
+                },
+                data: {'id' : edit_id,'editedComment':$("#editComment_"+edit_id).val()},
+                success: function (response) {
+                    if(response.status=="success"){
+                        alert("comment edited successfully");
+                        setTimeout(() => {
+                            window.location.reload()
+                        }, 1000);
+                    }
+                    else{
+                        alert("comment not edited");
+                        window.location.reload() 
+                    }
+                }
+            });
+        }
+    })
 }
 
 function  delete_comment(id){
