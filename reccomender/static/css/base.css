@@ -603,7 +603,7 @@ body .form-horizontal{
 .card{
     margin-top: 20px;
 }
-.slick-slide{
+body .slick-slide{
     height: auto;
 }
 .slick-initialized .slick-slide{
