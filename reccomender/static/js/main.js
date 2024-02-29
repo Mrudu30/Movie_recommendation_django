@@ -20,36 +20,21 @@ $(document).ready(function () {
 function edit_comment(id){
     var edit_id = parseInt(id)
     var edit_comment_id = "comment_"+edit_id
-    $("#editCommentDiv").dialog({
-        autoOpen: false,
-        modal: true,
-        resizable: false,
-        width: 700,
-        title: 'Edit Comment',
-        buttons: {
-            "Close": function() {
-                $('#editCommentForm').trigger('reset');
-                $(this).dialog("close");
-            }
-        },
-        open: function (event, ui) {
-            $(".ui-dialog-titlebar-close").hide();
-        }
-    })
-    $("#editCommentDiv").dialog("open")
+    $("#editCommentDiv_"+edit_id).show()
+    console.log("#editCommentDiv_"+edit_id)
     $("#editComment").val($("#"+edit_comment_id).val())
-    $.ajax({
-        type: "POST",
-        url: "editComment/"+edit_id+"/",
-        headers: {
-            'X-CSRFToken': csrfToken 
-        },
-        data: "data",
-        dataType: "dataType",
-        success: function (response) {
-            
+
+    function validateCommentForm(){
+        var editeValue = $("#editedComment_"+edit_id).val()
+        if (!editeValue || editeValue == ""){
+            $("#Comment_help_"+edit_comment_id).text("You cannot leave the comment empty").addClass('text-danger')
+            return false
         }
-    });
+        else{
+            $("#Comment_help_"+edit_comment_id).text("").removeClass('text-danger')
+            return true
+        }
+    }
 }
 
 function  delete_comment(id){

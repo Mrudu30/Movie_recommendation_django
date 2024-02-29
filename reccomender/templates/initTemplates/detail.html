@@ -10,7 +10,7 @@
     </ul>
 {% endif %}
 
-    <table class="table table-borderless table-responsive">
+    <table class="table table-borderless table-responsive table-dark">
         <tbody>
             <tr> 
                 <td width="50%" class="left-part">
@@ -55,11 +55,24 @@
                                     <div class="card-header">
                                         <h4>{{ comment.user.username }}</h4>
                                         {% if request.user == comment.user %}
+                                            <button onclick="edit_comment('{{comment.id}}')" class="delete">Edit</button> 
                                             <button onclick="delete_comment('{{comment.id}}')" class="delete">Delete</button>
                                         {% endif %}
                                     </div>
                                     <div class="card-body">
                                         <p>{{ comment.comment }}</p>
+                                        <div id="editCommentDiv_{{comment.id}}" style="display: none;">
+                                            <!-- action="{% url 'edit_comment' comment.id %}" -->
+                                            <form method="post" id="editCommentForm_{{comment.id}}" action="{% url 'edit_comment' comment.id %}">
+                                                {% csrf_token %}
+                                                <div class="form-group">
+                                                  <label>Edit Comment:</label>
+                                                  <input type="text" name="editedComment" id="editComment_{{comment.id}}" class="form-control" placeholder="Edit Your Comment" aria-describedby="Comment_help">
+                                                  <small id="Comment_help_{{comment.id}}" class=""></small>
+                                                </div>
+                                                <input type="submit" value="Save Edit" class="btn btn-primary">
+                                            </form>
+                                        </div>
                                     </div>
                                 </div>
                             {% endfor %}
@@ -103,5 +116,5 @@
             <input type="submit" value="Edit" class="btn btn-primary">
         </form>
     </div>
-</div>
-{% endblock content %} -->
+</div>-->
+{% endblock content %}

@@ -87,6 +87,17 @@ def detail(request, movie_id):
     return render(request, 'initTemplates/detail.html', context)
 
 # comment edit and delete
+def editComment(request,id):
+    comment = get_object_or_404(Comments, id=id)
+    print(comment)
+    if request.method == 'POST':
+        editedComment = request.POST.get('editedComment')
+        comment.comment = editedComment
+        comment.save()
+        print("commentsaved")
+        return redirect('detail',movie_id=comment.movie.id)
+    return JsonResponse({"status":"error"})
+
 def deleteComment(request,id):
     comment = get_object_or_404(Comments, id=id)
     
