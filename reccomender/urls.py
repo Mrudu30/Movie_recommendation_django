@@ -6,10 +6,11 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('',index),
-    path('home/',home,name='home'),
+    path('password-reset/',av.ResetPasswordView.as_view(),name='password-reset'),
     path('login/',av.loginaccount,name='login'),
     path('signupaccount/', av.signupaccount, name='signup'),
     path('logout/', av.logoutaccount, name='logout'),
+    path('home/',home,name='home'),
     path('mylist/',mylist,name='mylist'),
     path('detail/<int:movie_id>/', detail, name='detail'),
     path('filter/', filter_movies, name='filter_movies'),
