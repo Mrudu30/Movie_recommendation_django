@@ -10,7 +10,7 @@ $(document).ready(function(){
     $(".toggler-search-icon").click(function(){
         $(".search").css('display' , "block")
     })
-    $('.movie-content').slick({
+    $('.movie-loop').slick({
         dots: false,
         infinite: false,
         speed: 300,

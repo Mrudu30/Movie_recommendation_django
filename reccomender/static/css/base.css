@@ -187,7 +187,7 @@ header .logo{
     border-radius: 6px;
 }
 header{
-    padding-bottom: 20px;
+    padding-bottom: 10px;
     position: relative;
 }
 .nav-item:last-child{
@@ -265,7 +265,6 @@ header{
     margin-top: 0px;
 }
 header .input-group{
-    margin-top: 20px;
     align-items: center;
 }
 .movie-add{
@@ -387,9 +386,6 @@ h1 , h2 , h3 , h4 , h5{
 }
 :focus-visible{
     outline: none;
-}
-footer{
-    padding-top: 75px;
 }
 .row{
     margin: 0px!important;
@@ -603,9 +599,20 @@ body .form-horizontal{
 .card{
     margin-top: 20px;
 }
-.slick-slide{
+body .slick-slide{
     height: auto;
 }
 .slick-initialized .slick-slide{
     padding: 0px 10px;
+}
+footer .navbar{
+    padding-right: 0px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+footer{
+    padding-top: 30px;
+}
+.footer-copyright{
+    color: #fff;
 }
