@@ -229,11 +229,11 @@ header{
     margin-top: 20px;
     height: 45px;
     font-size: 18px;
-    background: red;
+    background: #E36750;
     border: none;
 }
 .signup-button:hover{
-    background-color: red;
+    background-color: #E36750;
 }
 .back-login{
     font-size: 18px;
@@ -347,7 +347,7 @@ body .slick-slider{
     margin-right: 10px;
 }
 .filter-button{
-    background-color: red;
+    background-color: #E36750;
     border: 0px;
     border-radius: 10px;
     color: #fff;
@@ -364,8 +364,8 @@ h1 , h2 , h3 , h4 , h5{
     margin-left: 0px;
 }
 .btn-check:focus+.btn-primary, .btn-primary:focus{
-    background-color: red;
-    border-color: red;
+    background-color: #E36750;
+    border-color: #E36750;
     box-shadow: none;
 }
 .form-control:focus{
@@ -374,15 +374,15 @@ h1 , h2 , h3 , h4 , h5{
 }
 .button-css{
     font-size: 16px;
-    background-color: red;
+    background-color: #E36750;
     color: #fff;
 }
 .btn-check:focus+.btn-success, .btn-success:focus{
-    background-color: red;
+    background-color: #E36750;
     box-shadow: none;
 }
 .btn-success:hover{
-    background-color: red;
+    background-color: #E36750;
 }
 :focus-visible{
     outline: none;
@@ -618,7 +618,21 @@ footer{
 }
 
 .btn:focus-visible{
-    background: red;
+    background: #E36750;
     border: none;
     box-shadow: none;
+}
+.card-body p {
+    color: #000;
+}
+.delete-edit-button .btn:hover{
+    color: #fff;
+}
+.btn{
+    background-color: #E36750;
+    border: 0px;
+    color: #fff;
+}
+.edit-form .btn:hover{
+    color: #fff;
 }

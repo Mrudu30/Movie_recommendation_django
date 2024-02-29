@@ -55,22 +55,25 @@
                                     <div class="card-header">
                                         <h4>{{ comment.user.username }}</h4>
                                         {% if request.user == comment.user %}
-                                            <button onclick="edit_comment('{{comment.id}}')" class="delete">Edit</button> 
-                                            <button onclick="delete_comment('{{comment.id}}')" class="delete">Delete</button>
+                                            <div class="delete-edit-button">
+                                                <button onclick="edit_comment('{{comment.id}}')" class="delete btn">Edit</button> 
+                                                <button onclick="delete_comment('{{comment.id}}')" class="delete btn">Delete</button>
+                                            </div>
                                         {% endif %}
                                     </div>
-                                    <div class="card-body">
+                                    <div class="card-body edit-form">
                                         <p id="comment_{{comment.id}}">{{ comment.comment }}</p>
                                         <div id="editCommentDiv_{{comment.id}}" style="display: none;">
                                             <!-- action="{% url 'edit_comment' comment.id %}" -->
                                             <form method="post" id="editCommentForm_{{comment.id}}">
                                                 {% csrf_token %}
-                                                <div class="form-group">
-                                                  <label>Edit Comment:</label>
-                                                  <input type="text" name="editedComment" id="editComment_{{comment.id}}" class="form-control" placeholder="Edit Your Comment" aria-describedby="Comment_help">
-                                                  <small id="Comment_help_{{comment.id}}" class=""></small>
+                                                <div class="input-group">
+                                                    <label class="d-none">Edit Comment:</label>
+                                                    <input type="text" name="editedComment" id="editComment_{{comment.id}}" class="form-control" placeholder="Edit Your Comment" aria-describedby="Comment_help">
+                                                    <small id="Comment_help_{{comment.id}}" class=""></small>
+                                                    <input type="submit" value="Save Edit" class="btn">
                                                 </div>
-                                                <input type="submit" value="Save Edit" class="btn btn-primary">
+                                                
                                             </form>
                                         </div>
                                     </div>
