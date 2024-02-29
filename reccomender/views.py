@@ -38,8 +38,12 @@ def home(request):
 
     latest_movies = Movie.objects.order_by('-date_of_release')[:10]
     comedy_movies = Movie.objects.filter(genre__name='Comedy').order_by('-date_of_release')
+    romance_movies = Movie.objects.filter(genre__name='Romance').order_by('-date_of_release')
+    animation_movies = Movie.objects.filter(genre__name='Animation').order_by('-date_of_release')
+    scifi_movies = Movie.objects.filter(genre__name='Science Fiction').order_by('-date_of_release')
     movies = Movie.objects.all()
-    context =  {'movies': movies,'latest_movies':latest_movies,'comedy_movies':comedy_movies}
+    context =  {'movies': movies,'latest_movies':latest_movies,'comedy_movies':comedy_movies,
+                'romance_movies':romance_movies,'animation_movies':animation_movies,'scifi_movies':scifi_movies}
     
     return render(request,'initTemplates/home.html',context)
 
