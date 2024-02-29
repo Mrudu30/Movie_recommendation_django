@@ -187,7 +187,7 @@ header .logo{
     border-radius: 6px;
 }
 header{
-    padding-bottom: 20px;
+    padding-bottom: 10px;
     position: relative;
 }
 .nav-item:last-child{
@@ -229,11 +229,11 @@ header{
     margin-top: 20px;
     height: 45px;
     font-size: 18px;
-    background: red;
+    background: #E36750;
     border: none;
 }
 .signup-button:hover{
-    background-color: red;
+    background-color: #E36750;
 }
 .back-login{
     font-size: 18px;
@@ -265,7 +265,6 @@ header{
     margin-top: 0px;
 }
 header .input-group{
-    margin-top: 20px;
     align-items: center;
 }
 .movie-add{
@@ -319,10 +318,14 @@ header .input-group{
 }
 .heading-movie{
     margin-left: 0px;
-    margin-top: 20px;
-    margin-bottom: 10px;
+    margin-bottom: 30px;
     font-size: 35px;
     color: #fff;
+    text-align: center;
+}
+body .slick-slider{
+    margin-bottom: 0px;
+    height: auto;
 }
 .movie-title{
     color: #fff;
@@ -344,7 +347,7 @@ header .input-group{
     margin-right: 10px;
 }
 .filter-button{
-    background-color: red;
+    background-color: #E36750;
     border: 0px;
     border-radius: 10px;
     color: #fff;
@@ -361,8 +364,8 @@ h1 , h2 , h3 , h4 , h5{
     margin-left: 0px;
 }
 .btn-check:focus+.btn-primary, .btn-primary:focus{
-    background-color: red;
-    border-color: red;
+    background-color: #E36750;
+    border-color: #E36750;
     box-shadow: none;
 }
 .form-control:focus{
@@ -371,21 +374,24 @@ h1 , h2 , h3 , h4 , h5{
 }
 .button-css{
     font-size: 16px;
-    background-color: red;
+    background-color: #E36750;
     color: #fff;
 }
 .btn-check:focus+.btn-success, .btn-success:focus{
-    background-color: red;
+    background-color: #E36750;
     box-shadow: none;
 }
 .btn-success:hover{
-    background-color: red;
+    background-color: #E36750;
 }
 :focus-visible{
     outline: none;
 }
-footer{
-    padding-top: 75px;
+.row{
+    margin: 0px!important;
+}
+body .form-horizontal{
+    padding-right: 0px
 }
 
 @media screen and (max-width : 1180px) {
@@ -396,6 +402,80 @@ footer{
         width: 350px;
         margin-top: 10px;
     }
+    .movies{
+        width: calc(25% - 20px);
+    }
+}
+@media screen and (max-width : 992px){
+    .movies{
+        width: calc(33% - 20px);
+    }
+    body .filter-form{
+        width: 100%;   
+    }
+    body .login-form{
+        width: 90%;
+    }
+    .signup{
+        width: 100%;
+    }
+    .container{
+        padding: 20px 40px;
+    }
+    .right-part{
+        padding-left: 20px!important;
+    }
+    .container{
+        padding:  20px;
+    }
+} 
+@media screen and (max-width : 768px){
+    .movies{
+        width: calc(50% - 20px);
+    }
+    .right-part{
+        width: 100%;
+        padding: 0px;
+        padding-left: 0px !important;
+        display: block;
+    }
+    .left-part{
+        width: 100%;
+        display: block;
+    }
+    body div.login-form{
+        width: 90%;
+    }
+    
+    .signup td{
+        width: 100%;
+        display: block;
+    }
+    .login{
+        width: 100%;
+    }
+}
+@media screen and (max-width : 500px) {
+    body header .navbar-brand{
+        width: 230px;
+    }
+    header .container-fulid{
+        padding: 0px;
+    }
+    .movies{
+        width: 100%;
+    }
+    .container{
+        padding: 15px;
+    }
+    .images{
+        height: 500px;
+    }
+}
+@media screen and (max-width : 350px) {
+    body header a.navbar-brand{
+        width: 200px;
+    }
 }
 @media screen and (max-width : 1080px) {
     .navbar-toggler{
@@ -403,6 +483,9 @@ footer{
     }
     .mobile-nav{
         display: flex;
+        justify-content: flex-end;
+        padding-top: 10px;
+        align-items: center;
     }
     .fa-bars{
         color: #fff;
@@ -418,8 +501,58 @@ footer{
     .mobile-navbar-open{
         display: block;
     }
+    body .toggler-button{
+        display: block;
+    }
+    .navbar-expand-sm .navbar-collapse{
+        display: block!important;
+    }
+    .navbar-dark .navbar-nav .nav-link{
+        color: #000;
+    }
+    .navbar-nav{
+        display: block
+    }
+    .navbar{
+        padding: 20px;
+    }
+    .btn-close{
+        text-align: right;
+        padding: 20px;
+    }
+    .navbar-expand-sm .navbar-nav .nav-button .nav-link{
+        background-color: #000;
+        color: #fff!important;
+    }
+    header .form-horizontal{
+        width: auto;
+    }
+    body .toggler-search-icon{
+        display: block;
+    }
+    .toggler-search-icon i{
+        color: #000;
+        background: #fff;
+        padding: 9px;
+        border-radius: 50%;
+    }
+    .search{
+        display: none;
+    }
+    header .navbar-brand{
+        width: 300px;
+    }
 }
-.offcanvas-menu {
+.toggler-search-icon{
+    display: none;
+}
+.offcanvas.show {
+    transform: none;
+}
+.toggler-button{
+    display: none;
+}
+.offcanvas {
     position: fixed;
     bottom: 0;
     z-index: 1050;
@@ -432,11 +565,74 @@ footer{
     outline: 0;
     transition: transform .3s ease-in-out;
 }
-.offcanvas-start {
+.offcanvas-end{
     top: 0;
     right: 0;
     width: 400px;
-    border-right: 1px solid rgba(0,0,0,.2);
-    transform: none;
-    visibility: visible;
+    border-left: 1px solid rgba(0,0,0,.2);
+    transform: translateX(100%);
+    transform: translateX(100%)
+}
+.card-header{
+    display: flex;
+    justify-content: space-between;
+}
+.card-header h4{
+    color: #000;
+}
+.comment-section{
+    margin-top: 30px;
+    max-height: 500px;
+    overflow-y: auto;
+    border-radius: 10px;
+}
+.delete{
+    background-color: #000;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 15px;
+}
+.card:first-child{
+    margin-top: 0px;
+}
+.card{
+    margin-top: 20px;
+}
+body .slick-slide{
+    height: auto;
+}
+.slick-initialized .slick-slide{
+    padding: 0px 10px;
+}
+footer .navbar{
+    padding-right: 0px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+footer{
+    padding-top: 30px;
+}
+.footer-copyright{
+    color: #fff;
+}
+
+.btn:focus-visible{
+    background: #E36750;
+    border: none;
+    box-shadow: none;
+}
+.card-body p {
+    color: #000;
+}
+.delete-edit-button .btn:hover{
+    color: #fff;
+}
+.btn{
+    background-color: #E36750;
+    border: 0px;
+    color: #fff;
+}
+.edit-form .btn:hover{
+    color: #fff;
 }

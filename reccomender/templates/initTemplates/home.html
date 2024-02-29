@@ -25,7 +25,7 @@
 <!-- Movie list -->
 <div class="movie-add">
     <h2 class="heading-movie">Latest Movies:</h2>
-    <div class="movie-content">
+    <div class="movie-content movie-loop">
         {% if latest_movies %}
             {% for movie in latest_movies %}
                 <div class="movies">
@@ -40,14 +40,16 @@
                     </div>
                 </div>
             {% endfor %}
-            <hr>
         {% endif %}
     </div>
 </div>
+<script>
+   
+</script>
 
 <div class="movie-add">
     <h2 class="heading-movie">Comedy Movies:</h2>
-    <div class="movie-content">
+    <div class="movie-content movie-loop">
         {% if comedy_movies %}
             {% for movie in comedy_movies %}
                 <div class="movies">
@@ -62,14 +64,13 @@
                     </div>
                 </div>
             {% endfor %}
-            <hr>
         {% endif %}
     </div>
 </div>
 
 <div class="movie-add">
     <h2 class="heading-movie">All Movies:</h2>
-    <div class="movie-content">
+    <div class="movie-content movie-loop">
         {% if movies %}
             {% for movie in movies %}
                 <div class="movies">

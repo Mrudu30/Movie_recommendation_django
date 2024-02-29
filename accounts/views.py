@@ -2,10 +2,24 @@ from django.shortcuts import render
 from django.contrib.auth.models import User
 from django.contrib.auth import login, logout, authenticate
 from django.shortcuts import redirect
-from django.db import IntegrityError
 from .forms import UserCreationForm,AuthenticationForm
+from django.urls import reverse_lazy
+from django.contrib.auth.views import PasswordResetView
+from django.contrib.messages.views import SuccessMessageMixin
 
 # Create your views here
+# reset password 
+class ResetPasswordView(SuccessMessageMixin, PasswordResetView):
+    template_name = 'password_reset.html'
+    email_template_name = 'password_reset_email.html'
+    subject_template_name = 'password_reset_subject'
+    success_message = "We've emailed you instructions for setting your password, " \
+                      "if an account exists with the email you entered. You should receive them shortly." \
+                      " If you don't receive an email, " \
+                      "please make sure you've entered the address you registered with, and check your spam folder."
+    success_url = reverse_lazy('users-home')
+
+# sign up / new user
 def signupaccount(request):
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
@@ -20,10 +34,13 @@ def signupaccount(request):
         form = UserCreationForm()
     return render(request, 'signupaccount.html', {'form': form})
        
+       
+# logout account
 def logoutaccount(request):        
     logout(request)
     return redirect('home')
 
+# login account
 def loginaccount(request):    
     if request.method == 'GET':
         return render(request, 'loginaccount.html', 
