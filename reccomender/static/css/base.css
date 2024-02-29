@@ -616,3 +616,9 @@ footer{
 .footer-copyright{
     color: #fff;
 }
+
+.btn:focus-visible{
+    background: red;
+    border: none;
+    box-shadow: none;
+}
