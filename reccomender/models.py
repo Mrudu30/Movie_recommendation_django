@@ -11,7 +11,7 @@ class Genre(models.Model):
 
 # types of languages
 class Language(models.Model):
-    lang = models.CharField(max_length=10)
+    lang = models.CharField(max_length=50)
     
     def __str__(self) -> str:
         return self.lang
