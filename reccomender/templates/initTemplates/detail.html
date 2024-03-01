@@ -85,39 +85,24 @@
             </tr>
         </tbody>
     </table>
-<!-- <div class="sec-row">
-    <table>
-        <tbody>
-            {% if comments %}
-                {% for comment in comments %}
-                    <tr class="text-white">
-                        {% if request.user == comment.user %}
-                            <td>
-                                <button onclick="edit_comment('{{comment.id}}')">Edit</button>  
-                                <button onclick="delete_comment('{{comment.id}}')">Delete</button>
-                            </td>
-                        {% endif %}
-                        <td>{{ comment.user.username }}</td>
-                        <td id="comment_{{comment.id}}">{{ comment.comment }}</td>
-                    </tr>
+    <div class="movie-add">
+        <h2 class="heading-movie">Latest Movies In This Genre:</h2>
+        <div class="movie-content movie-loop">
+            {% if category_movies %}
+                {% for movie in category_movies %}
+                    <div class="movies">
+                        <div class="thumbnail">
+                            <a class="images" href="{% url 'detail' movie.id %}">
+                                <div class="elementor">
+                                    <img src="{{ movie.pic.url}}" class="img-responsive">
+                                </div>
+                            </a>
+                            <center class="movie-text"><h5 class="na">{{movie.name}}</h5></center>
+                            <!-- <h5>{{movie.genre}}</h5> -->
+                        </div>
+                    </div>
                 {% endfor %}
-            {% else %}
-                <tr class="text-white">
-                    <td>Be The First To Give A Review</td>
-                </tr>
             {% endif %}
-        </tbody>
-    </table>
-    <div id="editCommentDiv" style="display: none;">
-        <form method="post" id="editCommentForm">
-            {% csrf_token %}
-            <div class="form-group">
-              <label for="editComment">Edit Comment:</label>
-              <input type="text" name="editComment" id="editComment" class="form-control" placeholder="Edit Your Comment" aria-describedby="Comment_help">
-              <small id="Comment_help" class=""></small>
-            </div>
-            <input type="submit" value="Edit" class="btn btn-primary">
-        </form>
+        </div>
     </div>
-</div>-->
 {% endblock content %}

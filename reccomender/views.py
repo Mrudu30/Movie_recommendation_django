@@ -1,6 +1,6 @@
 from django.shortcuts import redirect,render,get_object_or_404
 from django.db.models import Q
-from .models import Movie,MyList,Comments
+from .models import Movie,MyList,Comments,Genre
 from django.contrib import messages
 from django.http import Http404,JsonResponse
 from .forms import GenreFilterForm,LanguageFilterForm
@@ -64,6 +64,14 @@ def detail(request, movie_id):
     
     movie = get_object_or_404(Movie, id=movie_id)
     
+    # more in this category
+    genres = Genre.objects.all()
+    category_movies =[]
+    
+    for genre in genres:
+        movies = Movie.objects.filter(genre=genre).order_by('-date_of_release')
+        category_movies.extend(movies)
+    
     if request.method == 'POST':
         newcomment = request.POST.get('newcomment')
         if newcomment:
@@ -87,7 +95,7 @@ def detail(request, movie_id):
             return redirect('detail', movie_id=movie_id)
         return redirect('detail', movie_id=movie_id)
 
-    context = {'movie': movie, 'is_in_my_list': is_in_my_list,'comments':comments}
+    context = {'movie': movie, 'is_in_my_list': is_in_my_list,'comments':comments,'category_movies':category_movies}
     return render(request, 'initTemplates/detail.html', context)
 
 # comment edit and delete
