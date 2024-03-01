@@ -8,7 +8,7 @@ $(document).ready(function(){
         $(".offcanvas").css("visibility", "hidden")
     })
     $(".toggler-search-icon").click(function(){
-        $(".search").css('display' , "block")
+        $(".search").toggleClass('search-open')
     })
     $('.movie-loop').slick({
         dots: false,

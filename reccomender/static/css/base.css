@@ -108,10 +108,7 @@ header .logo{
     justify-content: end;
 }
 .nav-item{
-    margin-right: 40px;
-}
-.navbar{
-    padding-right: 40px;
+    margin-right: 35px;
 }
 .form-horizontal{
     width: 100%;
@@ -161,6 +158,8 @@ header .logo{
 .img-responsive{
     width: 100%;
     height: 100%;
+    object-fit: cover;
+    object-position: center;
 }
 .thumbnail{
     position: relative;
@@ -405,6 +404,9 @@ body .form-horizontal{
     .movies{
         width: calc(25% - 20px);
     }
+    .nav-item{
+        margin-right: 20px;
+    }
 }
 @media screen and (max-width : 992px){
     .movies{
@@ -541,6 +543,18 @@ body .form-horizontal{
     }
     header .navbar-brand{
         width: 300px;
+    }
+    .search{
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+    }
+    .search-open{
+        display: block;
+    }
+    .container{
+        padding: 20px 40ox;
     }
 }
 .toggler-search-icon{

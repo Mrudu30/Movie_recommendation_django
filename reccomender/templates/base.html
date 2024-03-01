@@ -32,9 +32,11 @@
                                 <span class="toggler-search-icon">
                                     <i class="fa fa-search" aria-hidden="true"></i>
                                 </span>
-                                <div class="input-group search">
-                                    <input type="text" class="search-input" id="search" name="q" value="{{ request.POST.q }}" placeholder= "Search Movies "/>
-                                    <button class='btn btn-success search-button button-css' type='submit'>Search</button>
+                                <div class="search">
+                                    <div class="input-group">
+                                        <input type="text" class="search-input" id="search" name="q" value="{{ request.POST.q }}" placeholder= "Search Movies "/>
+                                        <button class='btn btn-success search-button button-css' type='submit'>Search</button>
+                                    </div>
                                 </div>
                             </div>
                         </form>
