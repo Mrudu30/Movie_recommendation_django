@@ -2,11 +2,6 @@
 {% block content %}
 {% load static %}
 <script src="{% static 'js/main.js' %}"></script>
-{% if not request.user.is_authenticated %}
-<br>
-{% else %}
-<center style="color:#fff; text-transform: capitalize;"><h2>Welcome {{user.username}}!!</h2></center>
-{% endif %}
 
 <style>
     .thumbnail p, .thumbnail h4 {
