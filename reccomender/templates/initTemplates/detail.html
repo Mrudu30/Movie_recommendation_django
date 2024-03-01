@@ -23,6 +23,16 @@
                     <h1 class="movie-title">{{ movie.name }}</h1>
                     <p class="desc">{{ movie.desc }}</p>
                     <p class="date">Date of Release: <b>{{ movie.date_of_release }}</b></p>
+                    <p class="date">Languages:
+                        {% for language in movie.languages.all %}
+                            <b>{{ language }}</b>{% if not forloop.last %}, {% endif %}
+                        {% endfor %}
+                    </p>
+                    <p class="date">Genres:
+                        {% for genre in movie.genre.all %}
+                            <b>{{ genre }}</b>{% if not forloop.last %}, {% endif %}
+                        {% endfor %}
+                    </p>
                     <!-- Right Movie Info -->
                     <form class="form-horizontal" role="search" method="post" action="{% url 'detail' movie.id %}">
                         {% csrf_token %}
