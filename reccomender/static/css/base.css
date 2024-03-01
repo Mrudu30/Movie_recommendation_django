@@ -407,6 +407,12 @@ body .form-horizontal{
     .nav-item{
         margin-right: 20px;
     }
+    div .filter-form{
+        width: 80%;
+    }
+    header{
+        padding-bottom: 35px;
+    }
 }
 @media screen and (max-width : 992px){
     .movies{
@@ -472,6 +478,9 @@ body .form-horizontal{
     }
     .images{
         height: 500px;
+    }
+    #id_genre div{
+        width: 100%;
     }
 }
 @media screen and (max-width : 350px) {
