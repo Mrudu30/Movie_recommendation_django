@@ -28,7 +28,9 @@ SECRET_KEY = 'django-insecure-hgdg+945r30=wbokjp-$)cui4g-y*i@ul2v74rw8531drw#tjl
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'movie-recommender-the-cinephiles.onrender.com'
+]
 
 # email configs
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
